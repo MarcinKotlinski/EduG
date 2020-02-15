@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Misja Specjalna {{mainText}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding *ngFor="let item of missionFast">
+  <timeline endIcon="finish">
+    <timeline-item>
+      <ion-card text-wrap>
+        <ion-card-content class="missionName" text-wrap>
+          {{item.codename}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <ion-icon name="log-in"></ion-icon>
+      <ion-card-header text-wrap class="title-card">
+        <!--<ion-card-title class="start-txt">Start Misji:</ion-card-title>-->
+        <ion-card-title class="start-clock">{{item.mission_start}}</ion-card-title>
+      </ion-card-header>
+      <ion-card text-wrap>
+        <ion-card-content>
+          {{startText | removehtmltags}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <ion-icon name="help"></ion-icon>
+      <ion-card>
+        <ion-card-header text-wrap class="question">
+          {{item.question_1}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_1["1"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question11"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_1["2"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question12"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_1["3"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question13"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_1["4"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question14"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item *ngFor="let item of missionFast">
+      <ion-icon name="help"></ion-icon>
+      <ion-card>
+        <ion-card-header text-wrap class="question">
+          {{item.question_2}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_2["1"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question21"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_2["2"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question22"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_2["3"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question23"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_2["4"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question24"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item *ngFor="let item of missionFast">
+      <ion-icon name="help"></ion-icon>
+      <ion-card>
+        <ion-card-header text-wrap class="question">
+          {{item.question_3}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_3["1"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question31"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_3["2"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question32"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_3["3"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question33"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_3["4"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question34"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item *ngFor="let item of missionFast">
+      <ion-icon name="help"></ion-icon>
+      <ion-card>
+        <ion-card-header text-wrap class="question">
+          {{item.question_4}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_4["1"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question41"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_4["2"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question42"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_4["3"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question43"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>{{item.answers_4["4"]}}</ion-label>
+              <ion-checkbox [(ngModel)]="question44"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <timeline-time time="item.time"></timeline-time>
+      <ion-icon name="pause"></ion-icon>
+      <ion-card-header text-wrap class="title-card">
+        <!--<ion-card-title class="start-txt">Koniec Misji:</ion-card-title>-->
+        <ion-card-title class="start-clock">{{item.finish_time}}</ion-card-title>
+      </ion-card-header>
+      <ion-card text-wrap>
+        <ion-card-content>
+          {{finishText | removehtmltags}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+  </timeline>
+  <button ion-button block (click)="sendAnswer()">Odpowiedz</button>
+</ion-content>

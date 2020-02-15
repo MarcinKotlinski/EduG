@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Niezbędnik agenta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="learning">
+      <ion-segment-button value="special">
+        <ion-icon name="jet"  item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="laboratory">
+        <ion-icon name="flask" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="additional">
+        <ion-icon name="clipboard" item-start></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="learning">
+    <ion-card *ngSwitchCase="'additional'">
+      <ion-card-header text-wrap>
+        Materiały dodatkowe
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let add of additional" (click)="openFile(add.location)" text-wrap>
+          <ion-icon name="document" item-start></ion-icon>
+          {{add.filemane}}
+        </button>
+        <button ion-item *ngIf="additional.length <= 0 || !special">
+          Brak dostępnych materiałów
+        </button>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'laboratory'">
+      <ion-card-header text-wrap>
+        Agent Laboratoryjny
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let lab of labor" (click)="openFile(lab.location)" text-wrap>
+          <ion-icon name="document" item-start></ion-icon>
+          {{lab.filemane}}
+        </button>
+        <button ion-item *ngIf="labor.length <= 0 || !special">
+          Brak dostępnych materiałów
+        </button>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'special'">
+      <ion-card-header text-wrap>
+        Agent Specjalny
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let spec of special" (click)="openFile(spec.location)" text-wrap>
+          <ion-icon name="document" item-start></ion-icon>
+          {{spec.filemane}}
+        </button>
+        <button ion-item *ngIf="special.length <= 0 || !special">
+          Brak dostępnych materiałów
+        </button>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>

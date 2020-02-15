@@ -1,0 +1,40 @@
+page-medals {
+  ion-card {
+    display: inline-block;
+    width: 50%;
+  }
+  .fixed-content{
+    background: #ECECF0;
+  }
+
+  .card-title {
+    text-align: center;
+    display: block;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: #222;
+    margin: 2px 0;
+    padding: 8px 0;
+  }
+
+  //.card {
+  //  width: 42.5%;
+  //}
+
+  .button {
+    border-radius: 4px;
+    height: 2.0em;
+    font-size: 1.1rem;
+    margin: 0.9rem 0.2rem;
+    padding: 1.3em 1em;
+  }
+
+  .button-md{
+    padding: 1.5em 1em;
+  }
+
+  .button-ios{
+    font-size: 1.2rem;
+  }
+}
+

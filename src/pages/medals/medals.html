@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Odznaczenia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-card *ngFor="let item of badges">
+      <ion-card-content>
+        <ion-card-title>
+          {{ item.name }}
+        </ion-card-title>
+        <!--<img src="img/nin-live.png"/>-->
+        <progress-bar [progress]="item.perc"></progress-bar>
+        <button ion-button outline block (click)="showAlert(item.desc)">Jak mnie zdobyć?</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

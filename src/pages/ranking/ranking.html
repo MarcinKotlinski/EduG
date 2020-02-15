@@ -1,0 +1,119 @@
+
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ranking</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="agent">
+      <ion-segment-button *ngIf="version=='daily'" value="special">
+        <ion-icon name="jet"  item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version =='daily' || version =='weekly'" value="laboratory">
+        <ion-icon name="flask" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version=='daily'" value="flash">
+        <ion-icon name="flash" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="super">
+        <ion-icon name="trophy" item-start></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="agent">
+    <ion-list *ngSwitchCase="'flash'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Agent Błyskawiczny
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>AGENT</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item *ngFor="let fa of fast">
+              Agent: {{fa.idu}}
+              <div item-end>{{fa.points}}</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'special'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Agent Specjalny
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>AGENT</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item *ngFor="let special of specials">
+              Agent: {{special.idu}}
+              <div item-end>{{special.points}}</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'laboratory'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Agent Laboratoryjny
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>AGENT</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item *ngFor="let lab of labo">
+              Agent: {{lab.idu}}
+              <div item-end>{{lab.points}}</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'super'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Agent Wszechstronny
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>AGENT</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item *ngFor="let fu of full">
+              Agent: {{fu.idu}}
+              <div item-end>{{fu.points}}</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

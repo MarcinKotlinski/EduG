@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Misja Błyskawiczna {{mainText}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngFor="let item of missionFast">
+  <timeline endIcon="finish">
+    <timeline-item>
+      <ion-card text-wrap>
+        <ion-card-content class="missionName">
+          {{item.codename}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <ion-icon name="log-in"></ion-icon>
+      <ion-card-header text-wrap class="title-card">
+        <ion-card-title class="start-clock">{{item.mission_start}}</ion-card-title>
+      </ion-card-header>
+      <ion-card text-wrap>
+        <ion-card-content>
+          {{item.intro_text | removehtmltags}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <ion-icon name="help"></ion-icon>
+      <ion-card text-wrap>
+        <ion-card-content>
+          {{item.mission_text | removehtmltags}}
+          <img [src]="item.picture">
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+    <timeline-item>
+      <ion-icon name="text"></ion-icon>
+      <ion-list>
+        <form [formGroup]="user">
+          <ion-item>
+            <ion-input type="text" [(ngModel)]='answer' formControlName="name" placeholder="Odpowiedź"></ion-input>
+            <button ion-button basic [disabled]="!user.valid" item-end (click)="sendAnswer()">Wyślij</button>
+          </ion-item>
+        </form>
+      </ion-list>
+    </timeline-item>
+    <timeline-item>
+      <timeline-time time="item.time"></timeline-time>
+      <ion-icon name="pause"></ion-icon>
+      <ion-card-header text-wrap class="title-card">
+        <ion-card-title class="start-clock">{{item.finish_time}}</ion-card-title>
+      </ion-card-header>
+      <ion-card text-wrap>
+        <ion-card-content>
+          {{item.finish_text | removehtmltags}}
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
+  </timeline>
+</ion-content>

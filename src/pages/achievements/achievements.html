@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Osiągnięcia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="agent">
+      <ion-segment-button *ngIf="version=='daily'" value="special">
+        <ion-icon name="jet" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version =='daily' || version =='weekly'" value="laboratory">
+        <ion-icon name="flask" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version=='daily'" value="flash">
+        <ion-icon name="flash" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version =='daily' || version =='weekly'" value="final">
+        <ion-icon name="nuclear" item-start></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="agent">
+    <ion-list *ngSwitchCase="'special'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Misje Specjalne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>#</strong></ion-item>
+                  <ion-item *ngFor="let fa of fast">{{fa.idm}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col col-auto class="krypton">
+                <ion-list>
+                  <ion-item ><strong>KRYPTONIM</strong></ion-item>
+                  <ion-item *ngFor="let fa of fast">{{fa.codename}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item><strong>PKT</strong></ion-item>
+                  <ion-item *ngFor="let fa of fast">{{fa.points}}</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list  *ngSwitchCase="'laboratory'">
+      <ion-card *ngIf="version =='daily' || version =='weekly'">
+        <ion-card-content>
+          <ion-card-title>
+            Misje Laboratoryjne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>#</strong></ion-item>
+                  <ion-item *ngFor="let special of specials">{{special.idm}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col col-auto class="krypton">
+                <ion-list>
+                  <ion-item><strong>KRYPTONIM</strong></ion-item>
+                  <ion-item text-wrap *ngFor="let special of specials">{{special.codename}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item><strong>PKT</strong></ion-item>
+                  <ion-item *ngFor="let special of specials">{{special.points}}</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'flash'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Misje Błyskawiczne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>#</strong></ion-item>
+                  <ion-item *ngFor="let lab of labo">{{lab.idm}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col col-auto class="krypton">
+                <ion-list>
+                  <ion-item><strong>KRYPTONIM</strong></ion-item>
+                  <ion-item text-wrap *ngFor="let lab of labo">{{lab.codename}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item><strong>PKT</strong></ion-item>
+                  <ion-item *ngFor="let lab of labo">{{lab.points}}</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'final'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Misje Ostateczne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>#</strong></ion-item>
+                  <ion-item *ngFor="let fu of final">{{fu.idm}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col col-auto class="krypton">
+                <ion-list>
+                  <ion-item><strong>KRYPTONIM</strong></ion-item>
+                  <ion-item text-wrap *ngFor="let fu of final">{{fu.codename}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item><strong>PKT</strong></ion-item>
+                  <ion-item *ngFor="let fu of final">{{fu.points}}</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

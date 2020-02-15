@@ -1,0 +1,60 @@
+page-login {
+  .fixed-content{
+    background: #ECECF0;
+  }
+  logo{
+    width: 80%;
+  }
+  .codename{
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-top: none;
+  }
+  .select-text{
+    color: black !important;
+  }
+  .second{
+    padding-bottom: 25px;
+  }
+
+  .login-content{
+    margin-top: 5vh;
+  }
+
+  .logo{
+    max-width: 98%;
+    margin-left: 4.5px;
+    //background-image: url(../../assets/imgs/logo2.png);
+  }
+
+  //.item-input ion-input{
+  //  border-radius: 6px;
+  //  background: #ECEAF0;
+  //}
+
+  .button{
+    background: #D30000;
+    margin-bottom: 0;
+    height: 47px;
+  }
+
+  .button:hover{
+    background: #f53d3d;
+    margin-bottom: 0;
+  }
+
+  .button.activated{
+    background: #f53d3d;
+  }
+
+  .games{
+    max-width: none !important;
+  }
+
+  .popover-md .popover-content {
+    top: 333.967px !important;
+    left: 89px !important;
+    transform-origin: right top 0px;
+    transform: scale(1);
+  }
+}

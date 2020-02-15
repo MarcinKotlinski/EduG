@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EduG</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="learning">
+      <ion-segment-button value="all">
+        <ion-icon name="folder" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version=='daily'" value="special">
+        <ion-icon name="jet" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="laboratory">
+        <ion-icon name="flask" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button *ngIf="version=='daily'" value="fast">
+        <ion-icon name="flash" item-start></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="learning">
+    <ion-card *ngSwitchCase="'all'">
+      <ion-card-header text-wrap>
+        Dostępne Misje
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let spec of special" text-wrap (click)="pushMissionSpecial(spec.idm)">
+          <ion-icon name="jet" item-start></ion-icon>
+          <span class="missionSpec">Misja Specjalna {{spec.idm}}</span>
+        </button>
+        <button ion-item *ngFor="let lab of laboratory" text-wrap (click)="pushMissionLaboratory(lab.idm)">
+          <ion-icon name="flask" item-start></ion-icon>
+          <span class="missionLab">Misja Laboratoryjna {{lab.idm}}</span>
+        </button>
+        <button ion-item *ngFor="let f of fast" text-wrap (click)="pushMissionFast(f.idm)">
+          <ion-icon name="flash" item-start></ion-icon>
+          <span class="missionFast">Misja Błyskawiczna {{f.idm}}</span>
+        </button>
+        <button ion-item *ngIf="(special.length <= 0 || !special) && (laboratory.length <= 0 || !laboratory) && (fast.length <= 0 || !fast) ">
+          Brak dostępnych misji
+        </button>
+      </ion-list>
+    </ion-card>
+    <ion-card *ngSwitchCase="'special'">
+      <ion-card-header text-wrap>
+        Misje Specjalne
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let spec of special" text-wrap (click)="pushMissionSpecial(spec.idm)">
+          <ion-icon name="jet" item-start></ion-icon>
+          <div class="missionSpec">Misja Specjalna {{spec.idm}}</div>
+        </button>
+        <button ion-item *ngIf="special.length <= 0 || !special">
+          Brak dostępnych misji
+        </button>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'laboratory'">
+      <ion-card-header text-wrap>
+        Misje Laboratoryjne
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let lab of laboratory" text-wrap (click)="pushMissionLaboratory(lab.idm)">
+          <ion-icon name="flask" item-start></ion-icon>
+          <div class="missionLab">Misja Laboratoryjna {{lab.idm}}</div>
+        </button>
+        <button ion-item *ngIf="laboratory.length <= 0 || !laboratory">
+          Brak dostępnych misji
+        </button>
+      </ion-list>
+
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'fast'">
+      <ion-card-header text-wrap>
+        Misje Błyskawiczne
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item *ngFor="let f of fast" text-wrap (click)="pushMissionFast(f.idm)">
+          <ion-icon name="flash" item-start></ion-icon>
+          <div class="missionFast">Misja Błyskawiczna {{f.idm}}</div>
+        </button>
+        <button ion-item *ngIf="fast.length <= 0 || !fast">
+          Brak dostępnych misji
+        </button>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>
+

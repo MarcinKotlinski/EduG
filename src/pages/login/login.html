@@ -1,0 +1,32 @@
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="login-content">
+    <img class="logo" src="assets/imgs/logo2.png">
+    <ion-card>
+      <ion-item>
+        <ion-label floating>Adres email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" (change)="emailChanged()"></ion-input>
+      </ion-item>
+      <ion-item class="second">
+        <ion-label floating>Hasło</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-item class="codename">
+        <ion-label>Kryptonim</ion-label>
+        <ion-select [(ngModel)]="codename" (ionChange)="onChange(codename)" class="games" interface="popover" text-wrap>
+          <ion-option *ngFor="let item of games" [value]="{missionCodename: item.idg, missionLength: item.missions.length}">
+            {{item.idg}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button block (click)="loginUser()">Zaloguj</button>
+    </ion-card>
+  </div>
+</ion-content>

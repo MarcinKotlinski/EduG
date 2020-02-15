@@ -1,0 +1,10 @@
+<ion-tabs id="tabs">
+  <ion-tab  *ngIf="version =='after'" [root]="languageRoot" tabBadge="pl" tabTitle="Język" tabIcon="flag"></ion-tab>
+  <ion-tab *ngIf="version =='daily' || version =='weekly'" [root]="missionsRoot" [tabBadge]="missions" tabTitle="Misje" tabIcon="list-box"></ion-tab>
+  <ion-tab *ngIf="version=='daily'" [root]="avataryRoot" [tabBadge]="avatars" tabTitle="Avatary"
+           tabIcon="person"></ion-tab>
+  <ion-tab *ngIf="version=='daily'" [root]="bitcoinsRoot" [tabBadge]="bitcoins" tabTitle="Bitcoin'y"
+           tabIcon="logo-bitcoin"></ion-tab>
+  <ion-tab  *ngIf="version =='daily' || version =='weekly'" [root]="exacoinsRoot" [tabBadge]="exacoins" tabTitle="Exacoin'y" tabIcon="logo-usd"></ion-tab>
+  <ion-tab  *ngIf="version =='daily' || version =='weekly'" [root]="pointsRoot" [tabBadge]="points" tabTitle="Punkty" tabIcon="speedometer"></ion-tab>
+</ion-tabs>

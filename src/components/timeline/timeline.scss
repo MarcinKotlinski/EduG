@@ -1,0 +1,108 @@
+.timeline {
+  margin: 30px 0 0 0;
+  padding: 0;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #B4B3B6;
+    left: 20%;
+    margin-left: -7px;
+  }
+  timeline-item {
+    position: relative;
+    display: inline-block;
+
+    timeline-time {
+      display: block;
+      width: 20%;
+      padding-right: 50px;
+      position: absolute;
+      span {
+        display: block;
+        text-align: right;
+        &:last-child {
+          font-size: 2.9em;
+          color: #D30000;
+        }
+      }
+    }
+    /* Right content */
+    ion-card {
+      margin-left: 25% !important;
+      width: 75% !important;
+      position: relative;
+    }
+    ion-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.4em;
+      position: absolute;
+      color: #D30000;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #D30000;
+      text-align: center;
+      left: 20%;
+      top: 0;
+      margin: 0 0 0 -25px;
+      line-height: 40px;
+      &:after {
+        left: 40px;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-left-color: #D30000;
+        border-width: 10px;
+        top: 10px;
+      }
+    }
+    &:last-child{
+      width: 100%;
+      ion-icon{
+        box-shadow: 0 0 0 4px #D30000;
+        &:after{
+          border-width: 0;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: map-get($grid-breakpoints,'lg')){
+    timeline-item{
+      timeline-time{
+        font-size: 0.7em;
+      }
+    }
+  }
+  @media screen and (max-width: map-get($grid-breakpoints,'md')){
+    &:before{
+      left: 30px;
+    }
+    timeline-item{
+      ion-card{
+        margin-left: 80px !important;
+      }
+      ion-icon{
+        left: 30px;
+        top: 20px;
+      }
+      timeline-time{
+        font-size: 0.8em;
+        width: 100%;
+        left: 80px;
+        position: relative;
+        span{
+          text-align: left;
+        }
+
+      }
+    }
+  }
+}

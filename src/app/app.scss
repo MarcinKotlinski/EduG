@@ -1,0 +1,116 @@
+.ios, .md, .wp {
+  font-family: "OpenSans", Arial, sans-serif !important;
+  ion-menu {
+    ion-content {
+      background-color: red !important;
+    }
+  }
+  .circle-pic {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }
+  .ion-text-avatar {
+    margin: 8px 16px 8px 0px;
+    background: #D30000;
+  }
+  .missionsList {
+    margin-bottom: 35px;
+  }
+  .toolbar-background {
+    background: #1d1d1d;
+  }
+  .toolbar-title {
+    color: #fff;
+  }
+  .bar-button {
+    color: #D30000;
+  }
+  .custom {
+    background: #1d1d1d !important;
+  }
+  .list-ios .item-block .item-inner {
+    border-bottom: none;
+  }
+  .list-md .item-block .item-inner {
+    border-bottom: none;
+  }
+  .custom .item {
+    background: #1d1d1d !important;
+    color: #a9b1bd;
+    border: 0 !important;
+  }
+  .custom h2,
+  .custom h3,
+  .custom p,
+  .custom a {
+    color: #a9b1bd; /*Text color for each item, overrides the color property above*/
+  }
+  .alert-md .alert-button {
+    color: #D30000;
+  }
+  .alert-ios .alert-button {
+    color: #D30000;
+  }
+  //.scroll-content{
+  //  background: #ECECF0;
+  //}
+  .list-header-md {
+    background: transparent;
+    margin-bottom: 0;
+    margin-top: 20px;
+    border-top: none;
+  }
+  .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+    color: #a9b1bd;
+  }
+  .select-text {
+    color: transparent;
+  }
+  .action-sheet-md .action-sheet-selected {
+    font-weight: normal;
+  }
+  .action-sheet-ios .action-sheet-selected {
+    font-weight: normal;
+    background: #fff;
+  }
+  .list-ios {
+    margin: -1px 0 32px;
+  }
+  .select-md {
+    padding: 13px 8px 13px 1px;
+  }
+  ion-select {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    max-width: 17%;
+  }
+  .author{
+    float: left;
+    margin-left: 16px;
+    color: #979ea8;
+    font-size: 9px;
+  }
+  .toast-md .toast-message {
+
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 19px 16px 17px;
+    background: #D30000;
+
+  }
+  .select-md, .md .select-md, .wp .select-md {
+
+    padding: 13px 31px 13px 0 !important;
+
+  }
+  .laboOption{
+    font-size: 10px;
+
+  }
+
+}

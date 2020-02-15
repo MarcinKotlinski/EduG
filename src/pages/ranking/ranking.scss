@@ -1,0 +1,23 @@
+page-ranking {
+  ion-segment-button:active {
+    background: #1d1d1d;
+  }
+  ion-icon{
+    color: #D30000;
+  }
+  .segment-ios .segment-button.segment-activated {
+    color: rgb(255, 255, 255);
+    background-color: #1d1d1d;
+  }
+  .segment-ios .segment-button {
+    color: #1d1d1d ;
+    border-color: #1d1d1d;
+  }
+  .segment-md .segment-button {
+    color: #1d1d1d;
+  }
+  .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+    border-color: #1d1d1d;
+    opacity: 1;
+  }
+}

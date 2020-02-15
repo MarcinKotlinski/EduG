@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Obecności</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div padding>
+    <ion-segment [(ngModel)]="agent">
+      <ion-segment-button value="final">
+        <ion-icon name="jet" item-start></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="laboratory">
+        <ion-icon name="flask" item-start></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="agent">
+    <ion-list *ngSwitchCase="'laboratory'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Misje Laboratoryjne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>DATA</strong></ion-item>
+                  <ion-item *ngFor="let lab of labor">{{lab.data}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item>
+                    <ion-icon name="logo-bitcoin"></ion-icon>
+                  </ion-item>
+                  <ion-item *ngFor="let lab of labor">3</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'final'">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Misje Specjalne
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <ion-list>
+                  <ion-item><strong>DATA</strong></ion-item>
+                  <ion-item *ngFor="let fu of finall">{{fu.data}}</ion-item>
+                </ion-list>
+              </ion-col>
+              <ion-col>
+                <ion-list col-auto>
+                  <ion-item>
+                    <ion-icon name="logo-bitcoin"></ion-icon>
+                  </ion-item>
+                  <ion-item *ngFor="let fu of finall">3</ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

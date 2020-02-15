@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EduG</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pociągnij aby odświeżyć"
+      refreshingSpinner="circles"
+      refreshingText="Odświeżanie...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+    <ion-card-header text-wrap>
+      Misje Specjalne
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item *ngFor="let spec of special" text-wrap (click)="pushMissionSpecial(spec.idm)">
+        <ion-icon name="jet" item-start></ion-icon>
+        Misja Specjalna {{spec.idm}}
+      </button>
+    </ion-list>
+  </ion-card>
+  <ion-slides pager>
+    <ion-slide *ngFor="let item of badges">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Agent Błyskawiczny
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>AGENT</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item>
+              Agent: 003
+              <div item-end>45</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <ion-slides pager>
+    <ion-slide *ngFor="let item of badges">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            Obecności
+          </ion-card-title>
+          <ion-list>
+            <ion-item>
+              <strong>ILOŚĆ</strong>
+              <div item-end><strong>PKT</strong></div>
+            </ion-item>
+            <ion-item>
+              5
+              <div item-end>15</div>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

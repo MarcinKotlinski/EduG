@@ -1,0 +1,42 @@
+page-home {
+  .card-header{
+    background: #F6F6F6;
+  }
+  .fixed-content{
+    background: #ECECF0;
+  }
+  ion-segment-button:active {
+    background: #1d1d1d;
+  }
+  ion-icon{
+    color: #D30000;
+  }
+  .segment-ios .segment-button.segment-activated {
+    color: rgb(255, 255, 255);
+    background-color: #1d1d1d;
+  }
+  .item-md ion-icon[item-left], .item-md ion-icon[item-right], .item-md ion-icon[item-start], .item-md ion-icon[item-end] {
+    margin-left: 0;
+    margin-top: 11px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  .card-header-md {
+
+    font-size: 2.4rem;
+    color: #222;
+    padding: 16px;
+
+  }
+  .segment-ios .segment-button {
+    color: #1d1d1d ;
+    border-color: #1d1d1d;
+  }
+  .segment-md .segment-button {
+    color: #1d1d1d;
+  }
+  .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+    border-color: #1d1d1d;
+    opacity: 1;
+  }
+}

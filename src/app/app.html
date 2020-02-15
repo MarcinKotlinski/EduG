@@ -1,0 +1,109 @@
+<ion-menu id="authenticated" [content]="content" persistent=true>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Panel nawigacyjny</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="custom">
+    <ion-list>
+      <ion-item class="avatar">
+        <ion-avatar item-start>
+          <img [src]="profilePictureMenu">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{userName}}</h2>
+          <p style="color: #484E63;">AGENT {{agentNumber}}</p>
+          <p style="color: #484E63;">{{gameMain}} [{{groupName}}]</p>
+        </ion-label>
+        <ion-select interface="action-sheet" cancelText="Powrót" [selectOptions]="profileOptions">
+          <ion-label>none</ion-label>
+          <ion-option value="passwordChange" (ionSelect)="saveit('https://www.edug.pl/password.php')">Zmień hasło
+          </ion-option>
+          <ion-option value="logout" (ionSelect)="logout()">Wyloguj</ion-option>
+        </ion-select>
+      </ion-item>
+      <button *ngIf="version =='daily' || version =='weekly'" ion-item (click)="pushStart()">
+        <ion-icon name="home" item-start></ion-icon>
+        Menu główne
+      </button>
+      <button ion-item (click)="pushHome()">
+        <ion-icon name="briefcase" item-start></ion-icon>
+        Niezbędnik agenta
+      </button>
+    </ion-list>
+    <ion-list *ngIf="version =='daily' || version =='weekly'" class="missionsList">
+      <ion-list-header>
+        Misje
+      </ion-list-header>
+      <ion-item *ngIf="version=='daily'">
+        <ion-icon name="jet" item-start></ion-icon>
+        <ion-label>Specjalna</ion-label>
+        <ion-select interface="action-sheet" cancelText="Powrót" okText="Wybierz"
+                    style="color: transparent !important;">
+          <ion-option *ngFor="let s of special" [value]="s.idm" (ionSelect)="pushMissionSpecial(s.idm)">Misja
+            Specjalna {{s.idm}}
+          </ion-option>
+          <ion-option *ngIf="special.length <= 0 || !special">
+            Brak dostępnych misji
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="version =='daily' || version =='weekly'">
+        <ion-icon name="flask" item-start></ion-icon>
+        <ion-label>Laboratoryjna</ion-label>
+        <ion-select interface="action-sheet" cancelText="Powrót" okText="Wybierz">
+          <ion-option *ngFor="let l of laboratory" [value]="l.idm" (ionSelect)="pushMissionLaboratory(l.idm)">Misja
+            Laboratoryjna
+            {{l.idm}}
+          </ion-option>
+          <ion-option *ngIf="laboratory.length <= 0 || !laboratory">
+            Brak dostępnych misji
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="version=='daily'">
+        <ion-icon name="flash" item-start></ion-icon>
+        <ion-label>Błyskawiczna</ion-label>
+        <ion-select interface="action-sheet" cancelText="Powrót" okText="Wybierz">
+          <ion-option *ngFor="let f of fast" [value]="f.idm" (ionSelect)="pushMissionFast(f.idm)">Misja
+            Błyskawiczna {{f.idm}}
+          </ion-option>
+          <ion-option *ngIf="fast.length <= 0 || !fast">
+            Brak dostępnych misji
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <button *ngIf="version =='daily'" ion-item (click)="saveit('https://www.edug.pl/misja_hazd')">
+        <ion-icon name="cash" item-start></ion-icon>
+        <ion-label>Hazardowa</ion-label>
+      </button>
+      <button *ngIf="version =='daily' || version =='weekly'" ion-item (click)="saveit('https://www.edug.pl/misja_last')">
+        <ion-icon name="nuclear" item-start></ion-icon>
+        <ion-label>Ostateczna</ion-label>
+      </button>
+    </ion-list>
+    <ion-list>
+      <button ion-item (click)="pushMedal()">
+        <ion-icon name="medal" item-start></ion-icon>
+        Odznaczenia
+      </button>
+      <button ion-item (click)="pushAchievements()">
+        <ion-icon name="trophy" item-start></ion-icon>
+        Osiągnięcia
+      </button>
+      <button ion-item (click)="pushRanking()">
+        <ion-icon name="trending-up" item-start></ion-icon>
+        Rankingi
+      </button>
+      <button ion-item (click)="pushPresence()">
+        <ion-icon name="checkbox-outline" item-start></ion-icon>
+        Obecności
+      </button>
+    </ion-list>
+    <ion-label class="author">App created by Marcin Kotliński</ion-label>
+  </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
